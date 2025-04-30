@@ -1,0 +1,24 @@
+const express = require('express');
+const router = express.Router();
+const {
+  getVolunteers,
+  getVolunteer,
+  createVolunteer,
+  updateVolunteer,
+  deleteVolunteer,
+  getUserVolunteers
+} = require('../controllers/volunteerController');
+const { protect, authorize } = require('../middleware/auth');
+
+router.route('/')
+  .get(protect, authorize('admin'), getVolunteers)
+  .post(protect, createVolunteer);
+
+router.route('/:id')
+  .get(protect, getVolunteer)
+  .put(protect, updateVolunteer)
+  .delete(protect, deleteVolunteer);
+
+router.get('/user', protect, getUserVolunteers);
+
+module.exports = router; 
