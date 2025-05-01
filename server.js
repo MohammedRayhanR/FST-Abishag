@@ -11,14 +11,7 @@ connectDB();
 
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// Security middleware
+// Security middleware (includes CORS configuration)
 setupSecurity(app);
 
 // Compression middleware

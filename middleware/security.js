@@ -14,7 +14,7 @@ const apiLimiter = rateLimit({
 // Specific limiters
 const authLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 5, // limit each IP to 5 requests per windowMs
+  max: 20, // increased limit for testing
   message: 'Too many login attempts, please try again after an hour'
 });
 
@@ -26,7 +26,7 @@ const commentLimiter = rateLimit({
 
 // CORS options
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true

@@ -30,4 +30,12 @@ yarn-error.log*
 
 # OS
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Client build
+/client/build
+/client/dist
+
+# Server build
+/server/build
+/server/dist 

@@ -14,11 +14,12 @@ router.route('/')
   .get(protect, authorize('admin'), getVolunteers)
   .post(protect, createVolunteer);
 
+// This route must come before the /:id route to avoid conflicts
+router.get('/user', protect, getUserVolunteers);
+
 router.route('/:id')
   .get(protect, getVolunteer)
   .put(protect, updateVolunteer)
   .delete(protect, deleteVolunteer);
-
-router.get('/user', protect, getUserVolunteers);
 
 module.exports = router; 
